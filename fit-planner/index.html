@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Fit-Planner</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="inputs">
+    <div class="inputs-col">
+      <input placeholder="Текущий вес" type="text" class="text-input" id="current-weight">
+      <input placeholder="Желаемый вес" type="text" class="text-input" id="goal-weight">
+    </div>
+    
+    <div class="inputs-col inputs-col-wide">
+        <input placeholder="Начальная дата ДД.ММ.ГГГГ" type="text" class="text-input" id="start-date">
+        <input placeholder="Конечная дата ДД.ММ.ГГГГ" type="text" class="text-input" id="end-date">
+    </div>
+  </div>
+
+  <button class="button" id="count-button">Рассчитать</button>
+
+  <div class="plan">
+    <p class="avg-weight-loss" id="avg-weight-loss"></p>
+    <div class="months" id="months"></div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
