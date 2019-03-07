@@ -90,6 +90,10 @@ body {
   background-color: #4d54d8;
   color: #fff;
   box-shadow: 2px 2px 3px rgba(0, 0, 0, .5);
+  transition: background-color .15s ease-in-out;
+}
+.picked.goal {
+  background-color: #343aaf;
 }
 .goal-name {
   flex: 1;

@@ -1,12 +1,22 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import Month from './Month';
 
-const Months = () => {
-  // const months = fakeMonths.map(m => {
-  //   return <Month key={m.id} name={m.name} goals={m.goals} />
-  // })
-  return <div className="months">months</div>;
+const Months = ({ months }) => {
+  const monthsList = months.map(m => {
+    return <Month
+      key={m.id}
+      id={m.id}
+      name={m.name}
+      goals={m.goals} 
+    />
+  })
+  return <div className="months">{monthsList}</div>;
 }
 
-export default Months;
+const mapStateToProps = ({ months }) => {
+  return { months };
+}
+
+export default connect(mapStateToProps)(Months);

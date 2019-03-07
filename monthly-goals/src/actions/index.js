@@ -17,3 +17,17 @@ export function removeGoal(id) {
     payload: { id }
   }
 }
+
+export function pickGoal({ id, name }) {
+  return {
+    type: 'PICK_GOAL',
+    payload: { id, name }
+  }
+}
+
+export function pickMonth(id) {
+  return {
+    type: 'PICK_MONTH',
+    payload: { id }
+  }
+}

@@ -1,6 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const Month = ({ name, goals }) => {
+import { pickMonth } from '../actions';
+
+const Month = ({ id, name, goals, pickMonth }) => {
   const monthGoals = goals.map((goal, index) => {
     return (
       <li key={index} className="month-goal">
@@ -12,7 +15,11 @@ const Month = ({ name, goals }) => {
   
   return (
     <div className="month">
-      <h4 className="month-name">{name}</h4>
+      <h4
+        onClick={() => { pickMonth(id); }} 
+        className="month-name">
+        {name}
+      </h4>
       <ul className="month-goals">
         {monthGoals}
       </ul>
@@ -20,4 +27,4 @@ const Month = ({ name, goals }) => {
   );
 }
 
-export default Month;
+export default connect(null, { pickMonth })(Month);

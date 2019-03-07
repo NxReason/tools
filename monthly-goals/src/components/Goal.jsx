@@ -1,14 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { removeGoal } from '../actions';
+import { removeGoal, pickGoal } from '../actions';
 
-const Goal = ({ name, id, removeGoal }) => {
+const Goal = ({ id, name, removeGoal, pickedGoal, pickGoal }) => {
+  let picked = '';
+  if (pickedGoal) {
+    picked = pickedGoal.id === id ? 'picked' : '';
+  }
+
   return (
-    <div className="goal">
+    <div
+      onClick={(e) => { pickGoal({ id, name }); e.stopPropagation(); }}
+      className={`goal ${picked}`}>
       <p className="goal-name">{name}</p>
       <span 
-        onClick={() => removeGoal(id)}
+        onClick={(e) => { removeGoal(id); e.stopPropagation(); }}
         className="goal-delete-btn">
         x
       </span>
@@ -16,4 +23,6 @@ const Goal = ({ name, id, removeGoal }) => {
   );
 }
 
-export default connect(null, { removeGoal })(Goal);
+const mapStateToProps = ({ pickedGoal }) => ({ pickedGoal });
+
+export default connect(mapStateToProps, { removeGoal, pickGoal })(Goal);

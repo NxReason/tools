@@ -11,13 +11,67 @@ function goals(state = [], action) {
   }
 }
 
-function months(state = [], action) {
+function pickedGoal(state = null, action) {
+  switch (action.type) {
+    case 'PICK_GOAL':
+      return action.payload;
+    case 'REMOVE_GOAL':
+      if (state && action.payload.id === state.id) { return null; }
+      return state;
+  }
   return state;
 }
 
-const reducers = combineReducers({
-  goals,
-  months
-});
+
+const monthsDefault = [
+  { id: 1, name: 'January', goals: [] },
+  { id: 2, name: 'February', goals: [] },
+  { id: 3, name: 'March', goals: [] },
+  { id: 4, name: 'April', goals: [] },
+  { id: 5, name: 'May', goals: [] },
+  { id: 6, name: 'June', goals: [] },
+  { id: 7, name: 'July', goals: [] },
+  { id: 8, name: 'August', goals: [] },
+  { id: 9, name: 'September', goals: [] },
+  { id: 10, name: 'October', goals: [] },
+  { id: 11, name: 'November', goals: [] },
+  { id: 12, name: 'December', goals: [] }
+];
+
+function months(state = monthsDefault, action) {
+  return state;
+}
+
+const reducers = (state = {}, action) => {
+  console.log(action.type, state.pickedGoal);
+  if (action.type === 'PICK_MONTH' && state.pickedGoal) {
+    const newGoals = state.goals.filter(g => g.id !== state.pickedGoal.id);
+    const pickedMonth = state.months.find(m => m.id === action.payload.id);
+    const pickedMonthNewGoals = [...pickedMonth.goals, state.pickedGoal.name];
+    const newMonths = state.months.map(m => {
+      if (m === pickedMonth) { return { id: m.id, name: m.name, goals: pickedMonthNewGoals }; }
+      return m;
+    });
+    const result = {
+      goals: newGoals,
+      months: newMonths,
+      pickedGoal: null
+    };
+    console.log(result);
+    return result;
+  } 
+
+  const result = {
+    goals: goals(state.goals, action),
+    months: months(state.months, action),
+    pickedGoal: pickedGoal(state.pickedGoal, action)
+  };
+  console.log(result);
+  return {
+    goals: goals(state.goals, action),
+    months: months(state.months, action),
+    pickedGoal: pickedGoal(state.pickedGoal, action)
+  }
+}
 
 export default reducers;

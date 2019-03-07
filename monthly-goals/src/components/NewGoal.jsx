@@ -41,8 +41,4 @@ class NewGoal extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return { goals: state.goals };
-}
-
 export default connect(null, { addGoal })(NewGoal);
