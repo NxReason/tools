@@ -15,5 +15,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-console.log(module.hot);
 module.hot.accept();

@@ -1,14 +1,16 @@
 import React from 'react';
 
-import AddGoal from './AddGoal';
+import NewGoal from './NewGoal';
 import GoalsList from './GoalsList';
 import Months from './Months';
 
 const App = () => {
   return (
-    <div>
-      <AddGoal />
-      <GoalsList />
+    <div className="app">
+      <div className="left-column">
+        <NewGoal />
+        <GoalsList />
+      </div>
       <Months />
     </div>
   );
