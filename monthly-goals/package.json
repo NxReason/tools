@@ -1,0 +1,30 @@
+{
+  "name": "monthly-goals",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "webpack -p",
+    "wds": "webpack-dev-server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "electron": "^4.0.7",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.1"
+  },
+  "dependencies": {
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-redux": "^6.0.1",
+    "redux": "^4.0.1"
+  }
+}
