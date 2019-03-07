@@ -1,0 +1,177 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  color: #333;
+}
+
+.app {
+  padding: 20px;
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+
+  background-color: #3e97d1;
+}
+
+.left-column {
+  width: 400px;
+}
+
+/*****************************
+  New goal
+*****************************/
+.new-goal {
+  margin-bottom: 20px;
+  display: flex;
+}
+.new-goal-input {
+  flex: 1;
+  margin-right: 15px;
+  border: 0;
+  border-bottom: 2px solid #fff;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  color: #fff;
+  background-color: transparent;
+}
+.new-goal-input::placeholder {
+  font-style: italic;
+  color: #ccc;
+}
+.new-goal-input:focus {
+  outline: none;
+}
+.new-goal-btn {
+  width: 80px;
+  height: 40px;
+  margin-left: auto;
+
+  border: none;
+  border-radius: 5px;
+  background-color: #00b25c;
+  color: #fff;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, .5);
+  text-transform: uppercase; 
+  cursor: pointer;
+  transition: background-color .15s ease-in-out;
+}
+.new-goal-btn:hover {
+  background-color: #029e53;
+}
+.new-goal-btn:focus {
+  outline: none;
+}
+.new-goal-btn:disabled {
+  background-color: #888;
+}
+
+/*****************************
+  Goals list
+*****************************/
+.goals-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.goal {
+  display: flex;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 5px;
+
+  border-radius: 5px;
+  background-color: #4d54d8;
+  color: #fff;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, .5);
+  transition: background-color .15s ease-in-out;
+}
+.picked.goal {
+  background-color: #343aaf;
+}
+.goal-name {
+  flex: 1;
+  margin-right: 10px;
+}
+.goal-delete-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+
+/*****************************
+  Months
+*****************************/
+.months {
+  margin-left: 20px;
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.month {
+  width: 32%;
+  min-width: 150px;
+  margin-bottom: 10px;
+  
+  border-radius: 5px;
+  box-shadow: 0 0 4px 2px rgba(0, 0, 0, .5);
+  background-color: #4d54d8;
+  overflow: hidden;
+}
+.month-name {
+  height: 30px;
+  padding-top: 5px;
+  font-weight: normal;
+  
+  background-color: #2f3485;
+  color: #fff;
+  text-align: center;
+}
+.month-goals {
+  list-style: none;
+  font-size: .9rem;
+}
+.month-goals:empty {
+  height: 30px;
+}
+.month-goal {
+  display: flex;
+  padding: 15px 10px;
+
+  background-color: #4d54d8;
+  color: #fff;
+  border-bottom: 2px solid #fff;
+}
+.month-goal:last-of-type {
+  border: none;
+}
+.month-goal-name {
+  flex: 1;
+  margin-right: 10px;
+}
+.month-goal:hover > .month-goal-delete-btn {
+  opacity: 1;
+} 
+.month-goal-delete-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15px;
+  height: 15px;
+
+  opacity: 0;
+  cursor: pointer;
+  transition: opacity .1s ease-in-out;
+}
