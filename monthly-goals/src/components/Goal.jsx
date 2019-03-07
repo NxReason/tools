@@ -1,12 +1,19 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const Goal = ({ name }) => {
+import { removeGoal } from '../actions';
+
+const Goal = ({ name, id, removeGoal }) => {
   return (
     <div className="goal">
       <p className="goal-name">{name}</p>
-      <span className="goal-delete-btn">x</span>
+      <span 
+        onClick={() => removeGoal(id)}
+        className="goal-delete-btn">
+        x
+      </span>
     </div>
   );
 }
 
-export default Goal;
+export default connect(null, { removeGoal })(Goal);
