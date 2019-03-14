@@ -1,7 +1,6 @@
 {
   "name": "monthly-goals",
   "version": "1.0.0",
-  "description": "",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -27,5 +26,6 @@
     "react-redux": "^6.0.1",
     "redux": "^4.0.1",
     "uuid": "^3.3.2"
-  }
+  },
+  "description": ""
 }

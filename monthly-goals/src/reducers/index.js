@@ -43,7 +43,6 @@ function months(state = monthsDefault, action) {
 }
 
 const reducers = (state = {}, action) => {
-  console.log(action.type, state.pickedGoal);
   if (action.type === 'PICK_MONTH' && state.pickedGoal) {
     const newGoals = state.goals.filter(g => g.id !== state.pickedGoal.id);
     const pickedMonth = state.months.find(m => m.id === action.payload.id);
@@ -57,7 +56,6 @@ const reducers = (state = {}, action) => {
       months: newMonths,
       pickedGoal: null
     };
-    console.log(result);
     return result;
   } 
 
@@ -66,7 +64,6 @@ const reducers = (state = {}, action) => {
     months: months(state.months, action),
     pickedGoal: pickedGoal(state.pickedGoal, action)
   };
-  console.log(result);
   return {
     goals: goals(state.goals, action),
     months: months(state.months, action),
