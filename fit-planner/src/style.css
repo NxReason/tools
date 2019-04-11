@@ -1,0 +1,13 @@
+.app{
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+.section {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.modal {
+  overflow: visible;
+}

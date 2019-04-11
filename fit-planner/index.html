@@ -6,28 +6,107 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Fit-Planner</title>
 
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="node_modules/materialize-css/dist/css/materialize.min.css">
+
+  <link rel="stylesheet" href="src/style.css">
 </head>
 <body>
-  <div class="inputs">
-    <div class="inputs-col">
-      <input placeholder="Текущий вес" type="text" class="text-input" id="current-weight">
-      <input placeholder="Желаемый вес" type="text" class="text-input" id="goal-weight">
+  <div class="app grey darken-4">
+    <!-- Menu -->
+    <div class="section">
+      <a 
+        class="waves-effect waves-light btn purple modal-trigger" 
+        id="create-plan-btn"
+        href="#create-plan-modal"
+      >
+        <i class="material-icons left">date_range</i>
+        Составить план
+      </a>
+      <a
+        class="waves-effect waves-light btn purple modal-trigger"
+        id="set-current-btn"
+        href="#set-current-modal"
+      >
+        <i class="material-icons left">mode_edit</i>
+        Записать текущий вес
+      </a>
+    </div>
+
+    <!-- Modals -->
+    <div id="create-plan-modal" class="modal">
+      <div class="modal-content">
+        <div class="section">
+          <div class="input-field">
+            <input type="text" class="datepicker" id="begin-date">
+            <label for="begin-date">Начальная дата</label>
+          </div>
+          <div class="input-field">
+            <input type="text" class="datepicker" id="end-date">
+            <label for="end-date">Конечная дата</label>
+          </div>
+        </div>
+        <div class="section">
+          <div class="input-field">
+            <input id="begin-weight" type="text">
+            <label for="begin-weight">Начальный вес</label>
+          </div>
+          <div class="input-field">
+            <input id="end-weight" type="text">
+            <label for="end-weight">Конечный вес</label>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a
+          href="#!"
+          class="modal-close waves-effect waves-green btn"
+          >
+          Принять
+        </a>
+        <a
+          href="#!"
+          class="modal-close waves-effect waves-green btn"
+          >
+          Отменить
+        </a>
+      </div>
     </div>
     
-    <div class="inputs-col inputs-col-wide">
-        <input placeholder="Начальная дата ДД.ММ.ГГГГ" type="text" class="text-input" id="start-date">
-        <input placeholder="Конечная дата ДД.ММ.ГГГГ" type="text" class="text-input" id="end-date">
+    <div id="set-current-modal" class="modal">
+      <div class="modal-content">
+        <div class="input-field">
+          <input type="text" class="datepicker" id="set-current-date">
+          <label for="set-current-date">Дата</label>
+        </div>
+        <div class="input-field">
+          <input id="current-weight" type="text">
+          <label for="current-weight">Вес</label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a
+          href="#!"
+          class="modal-close waves-effect waves-green btn"
+          >
+          Принять
+        </a>
+        <a
+          href="#!"
+          class="modal-close waves-effect waves-green btn"
+          >
+          Отменить
+        </a>
+      </div>
     </div>
+
+    <!-- Plan -->
   </div>
 
-  <button class="button" id="count-button">Рассчитать</button>
-
-  <div class="plan">
-    <p class="avg-weight-loss" id="avg-weight-loss"></p>
-    <div class="months" id="months"></div>
-  </div>
-
-  <script src="index.js"></script>
+  <script src="node_modules/materialize-css/dist/js/materialize.min.js"></script>
+  <script src="src/PlannerView.js"></script>
+  <script src="src/Plan.js"></script>
+  <script src="src/Weights.js"></script>
+  <script src="src/index.js"></script>
 </body>
 </html>
