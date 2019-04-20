@@ -50,9 +50,14 @@ musicFiles.forEach(file => {
       console.log(`can't get artist & title from file: ${file}, no dashes in file name`);
     }
     const artist = parts[0].trim();
-    const title = parts[1].split('.')[0].trim();
+    const title = getTitle(parts[1]);
 
     let newTags = { artist, title };
     const success = id3.update(newTags, fullPath);
   });
 });
+
+function getTitle(titleWithExt) {
+  const parts = titleWithExt.split('.');
+  return parts.slice(0, parts.length - 1).join('.').trim();
+}
