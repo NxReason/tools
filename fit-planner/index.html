@@ -23,14 +23,6 @@
         <i class="material-icons left">date_range</i>
         Составить план
       </a>
-      <a
-        class="waves-effect waves-light btn purple modal-trigger"
-        id="set-current-btn"
-        href="#set-current-modal"
-      >
-        <i class="material-icons left">mode_edit</i>
-        Записать текущий вес
-      </a>
     </div>
 
     <!-- Modals -->
@@ -38,11 +30,11 @@
       <div class="modal-content">
         <div class="section">
           <div class="input-field">
-            <input type="text" class="datepicker" id="begin-date">
+            <input type="text" id="begin-date" placeholder="ДД.ММ.ГГГГ">
             <label for="begin-date">Начальная дата</label>
           </div>
           <div class="input-field">
-            <input type="text" class="datepicker" id="end-date">
+            <input type="text" id="end-date" placeholder="ДД.ММ.ГГГГ">
             <label for="end-date">Конечная дата</label>
           </div>
         </div>
@@ -61,39 +53,14 @@
         <a
           href="#!"
           class="modal-close waves-effect waves-green btn"
+          id="accept-plan"
           >
           Принять
         </a>
         <a
           href="#!"
           class="modal-close waves-effect waves-green btn"
-          >
-          Отменить
-        </a>
-      </div>
-    </div>
-    
-    <div id="set-current-modal" class="modal">
-      <div class="modal-content">
-        <div class="input-field">
-          <input type="text" class="datepicker" id="set-current-date">
-          <label for="set-current-date">Дата</label>
-        </div>
-        <div class="input-field">
-          <input id="current-weight" type="text">
-          <label for="current-weight">Вес</label>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <a
-          href="#!"
-          class="modal-close waves-effect waves-green btn"
-          >
-          Принять
-        </a>
-        <a
-          href="#!"
-          class="modal-close waves-effect waves-green btn"
+          id="decline-plan"
           >
           Отменить
         </a>
@@ -101,12 +68,13 @@
     </div>
 
     <!-- Plan -->
+    <div class="plan section" id="plan"></div>
   </div>
 
   <script src="node_modules/materialize-css/dist/js/materialize.min.js"></script>
-  <script src="src/PlannerView.js"></script>
   <script src="src/Plan.js"></script>
   <script src="src/Weights.js"></script>
+  <script src="src/PlannerView.js"></script>
   <script src="src/index.js"></script>
 </body>
 </html>
