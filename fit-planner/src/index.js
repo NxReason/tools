@@ -1,5 +1,7 @@
 const plannerView = new PlannerView();
-plannerView.update();
+setTimeout(() => {
+  plannerView.update();
+}, 1000);
 
 // materialize initialization
 document.addEventListener('DOMContentLoaded', function() {

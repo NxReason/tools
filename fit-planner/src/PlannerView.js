@@ -1,10 +1,5 @@
 const $container = document.getElementById('plan');
 
-const template = `
-  
-
-`;
-
 class PlannerView {
   constructor() {
     this.weights = new Weights(this);
@@ -14,17 +9,31 @@ class PlannerView {
   render() {
     const months = this.splitPlanToMonths();
     $container.innerHTML = '';
-    months.forEach(this.renderMonth);
+    months.forEach(this.renderMonth.bind(this));
+    const weightCells = document.querySelectorAll('.weight-cell');
+    weightCells.forEach(wc => {
+      wc.addEventListener('input', e => {
+        const date = e.target.dataset['date'];
+        const weight = parseFloat(e.target.textContent);
+        if (!Number.isNaN(weight)) {
+          this.weights.setWeight(date, weight);
+        }
+      })
+    })
   }
 
   renderMonth(month) {
     let tableRows = month.days.map(d => {
-      // TODO: check if have a weight data for this day
-      let weight = '';
+      const weight = this.weights.getWeightAtDate(d.date);
       return `<tr>
         <td>${d.date.getDate()}</td>
         <td>${d.weight.toFixed(1)}</td>
-        <td contenteditable="true">${weight}</td>
+        <td
+          contenteditable="true"
+          class="weight-cell"
+          data-date="${d.date.toDateString()}">
+          ${weight ? weight : ''}
+        </td>
       </tr>`
     }).join('\n');
 

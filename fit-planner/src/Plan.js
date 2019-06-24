@@ -1,3 +1,5 @@
+const PLAN_FILE_PATH = path.join(__dirname, 'data/plan.json');
+
 const $beginDate = document.getElementById('begin-date');
 const $endDate = document.getElementById('end-date');
 const $beginWeight = document.getElementById('begin-weight');
@@ -11,8 +13,11 @@ class Plan {
     this.endDate = null;
     this.beginWeight = null;
     this.endWeight = null;
-    // TODO: read initial data from file
     this.plan = [];
+    fs.readFile(PLAN_FILE_PATH, { encoding: 'UTF-8' }, (err, data) => {
+      if (err) { console.error(`Can't read plan file`); }
+      this.plan = JSON.parse(data, (k, v) => k === 'date' ? new Date(v) : v);
+    });
 
     $acceptPlan.addEventListener('click', this.onPlanAccepted.bind(this));
   }
@@ -23,7 +28,10 @@ class Plan {
     this.beginWeight = this.parseWeight($beginWeight);
     this.endWeight = this.parseWeight($endWeight);
     this.calculatePlan();
-    // TODO: save plan to file
+    const planStr = JSON.stringify(this.plan);
+    fs.writeFile(PLAN_FILE_PATH, planStr, (err) => {
+      if (err) { console.error(`Can't write to plan file`); }
+    });
     this.view.update();
   }
 
@@ -40,7 +48,7 @@ class Plan {
     for (let i = 1; i <= diffDays; i++) {
       result.push({
         date: new Date(this.beginDate.getTime() + day * i),
-        weight: this.endWeight - (losePerDay * i),
+        weight: this.beginWeight - (losePerDay * i),
       });
     }
     this.plan = result;
